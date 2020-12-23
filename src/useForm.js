@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const useForm = () => {
+const useForm = (validate) => {
     const [values, setValues] = useState({
         sliiteven: '',
         studid: '',
@@ -20,9 +20,11 @@ const useForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        setErrors(validate(values));
     }
 
-    return {Change, values, handleSubmit}
+    return {Change, values, handleSubmit, errors}
 };
 
 export default useForm;

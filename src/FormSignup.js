@@ -3,7 +3,7 @@ import useForm from './useForm'
 import validate from './validateInfo'
 
 export const FormSignup = () => {
-    const {Change, values, handleSubmit} = useForm();
+    const {Change, values, handleSubmit, errors} = useForm(validate);
     return (
         <div className="form-content-right">
             <form className="form" onSubmit={handleSubmit}>
@@ -23,6 +23,7 @@ export const FormSignup = () => {
                         StudentID
                     </label>
                     <input type="text" name="studid" id="studid" placeholder="Enter your student ID" value={values.studid} onChange={Change}></input>
+                    {errors.studid && <p>{errors.studid}</p>}
                 </div>
                 <div className="form-inputs">
                 <div className="form-inputs">
@@ -30,17 +31,20 @@ export const FormSignup = () => {
                         Name
                     </label>
                     <input type="text" id="stud" name="stud" placeholder="Enter your name here" value={values.stud} onChange={Change}></input>
+                    {errors.stud && <p>{errors.stud}</p>}
                 </div>
                     <label htmlFor="studemail" className="Form-Label">
                         Email
                     </label>
                     <input type="text" id="studemail" name="studemail" placeholder="Enter your email here" value={values.studemail} onChange={Change}></input>
+                    {errors.studemail && <p>{errors.studemail}</p>}
                 </div>
                 <div className="form-inputs">
                     <label htmlFor="studcontact" className="Form-Label">
                         Contact Number
                     </label>
                     <input type="text" id="studcontact" name="studcontact" placeholder="Enter your contact number here" value={values.studcontact} onChange={Change}></input>
+                    {errors.studcontact && <p>{errors.studcontact}</p>}
                 </div>
                 <button className="submit-btn">Submit</button>
             </form>
